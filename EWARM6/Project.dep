@@ -77,11 +77,11 @@
       <inputs>
         <tool>
           <name>BICOMP</name>
-          <file> 29 19 43 1 30 28 45 0 34 22 32 11 27 39 26 31</file>
+          <file> 29 19 43 1 30 28 45 0 34 22 32 11 27 44 26 31</file>
         </tool>
         <tool>
           <name>ICCARM</name>
-          <file> 27 29 22 26 11 28 19 31 30 32 45 1 0 43 34 39</file>
+          <file> 27 29 22 26 11 28 19 31 30 32 45 1 0 43 34 44</file>
         </tool>
       </inputs>
     </file>

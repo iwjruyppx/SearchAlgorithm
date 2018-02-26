@@ -5,29 +5,43 @@
 #include <stddef.h>
 
 #include "main.h"
-#include "search.h"
-
-static searchMem_t mem;
+#include "subscribeEvent.h"
 
 #define MAX_SIZE 30
 
-void testInit(void)
+
+int callBack(uint32_t evtType, uint32_t taskId)
+{
+    printf("[%d]%s:[%s,%d][%s,%d]\n",__LINE__,__FUNCTION__, "evtType", evtType, "taskId", taskId);
+    return 0;
+}
+
+void test1(int x)
 {
     int i;
+    for(i = 0; i< x; i++)
+        subscribeEventCheck(i, callBack);
+}
+
+void testInit(void)
+{
+    int i, j;
     for(i=0; i<MAX_SIZE; i++)
-        searchNodeAdd(&mem, i, NULL);
+        for(j=0; j<MAX_SIZE; j++)
+            subscribeEvent(i, j);
     for(i=0; i<MAX_SIZE; i++)
-        searchNodeDel(&mem, i);
+        for(j=0; j<MAX_SIZE; j++)
+            unSubscribeEvent(i, j);
     for(i=0; i<MAX_SIZE; i++)
-        searchNodeAdd(&mem, i, NULL);
+        for(j=i; j<MAX_SIZE; j++)
+            subscribeEvent(i, j);
 }
 
 void init()
 {
-    mem.memSize = 8 * MAX_SIZE;
-    mem.mem = (void *)malloc(mem.memSize);
-    searchInit(&mem);
+    subscribeEventInit();
 }
+
 
  int main( void )
 {
@@ -35,7 +49,7 @@ void init()
     testInit();
     while(1)
     {
-      printf("$$ddasdasd\n");
+        test1(30);
     }
 }
 

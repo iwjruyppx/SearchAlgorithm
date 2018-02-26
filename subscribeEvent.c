@@ -28,7 +28,7 @@ List A: |event1|event2|event3|event4|
 		|TaskxN|TaskxN|TaskxN|taskxN|
 */
 
-#define MAX_LISTEN_EVENT_SIZE  200
+#define MAX_LISTEN_EVENT_SIZE  900
 #define MAX_REGISTER_TYPE_SIZE 30
 
 typedef struct
@@ -52,11 +52,12 @@ static pNode_t nodeAlloc(void)
     for(i =0; i< MAX_LISTEN_EVENT_SIZE; i++)
     {
         if(evtMem.node[i].taskId == 0xFFFFFFFF)
+        {
+            evtMem.usedCount++;
             return &evtMem.node[i];
-            
+        }
     }
-    evtMem.usedCount++;
-    printf("[%d]%s:%s",__LINE__,__FUNCTION__,"memory alloc fail");
+    printf("[%d]%s:%s\n",__LINE__,__FUNCTION__,"memory alloc fail");
     return NULL;
 }
 
