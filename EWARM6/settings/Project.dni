@@ -9,7 +9,7 @@ TriggerName=main
 LimitSize=0
 ByteLimit=50
 [DebugChecksum]
-Checksum=1124442763
+Checksum=-723255743
 [Exceptions]
 StopOnUncaught=_ 0
 StopOnThrow=_ 0
@@ -118,7 +118,7 @@ Bp4=_ 0 "STD_CODE2" "{$PROJ_DIR$\..\..\..\..\..\..\work\Develop\Source\Protocol\
 Bp5=_ 0 "STD_CODE2" "{$PROJ_DIR$\..\..\..\release\System\src\main.c}.75.7" 0 0 1 "" 0 ""
 Bp6=_ 0 "STD_CODE2" "{$PROJ_DIR$\..\main.c}.22.5" 0 0 1 "" 0 ""
 Bp7=_ 1 "STD_CODE2" "{$PROJ_DIR$\..\subscribeEvent.c}.60.5" 0 0 1 "" 0 ""
-Bp8=_ 1 "STD_CODE2" "{$PROJ_DIR$\..\main.c}.52.9" 0 0 1 "" 0 ""
+Bp8=_ 1 "STD_CODE2" "{$PROJ_DIR$\..\main.c}.36.5" 0 0 1 "" 0 ""
 Count=9
 [Interrupts]
 Enabled=1

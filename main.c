@@ -18,10 +18,28 @@ int callBack(uint32_t evtType, uint32_t taskId)
 
 void test1(int x)
 {
-    int i;
+    int i, j;
+    for(i = 0; i< x; i++)
+        subscribeEventCheck(i, callBack);
+    
+    for(i=0; i<MAX_SIZE; i++)
+        for(j=0; j<MAX_SIZE; j++)
+            unSubscribeEvent(i, j);
+}
+
+void test2(int x)
+{
+    int i, j;
+    for(i=0; i<MAX_SIZE; i++)
+        for(j=0; j<MAX_SIZE; j++)
+            subscribeEvent(i, j);
+    for(i=0; i<MAX_SIZE; i++)
+        for(j=0; j<MAX_SIZE; j++)
+            subscribeEvent(i, j);
     for(i = 0; i< x; i++)
         subscribeEventCheck(i, callBack);
 }
+
 
 void testInit(void)
 {
@@ -47,9 +65,10 @@ void init()
 {
     init();
     testInit();
+    test1(30);
     while(1)
     {
-        test1(30);
+        test2(30);
     }
 }
 

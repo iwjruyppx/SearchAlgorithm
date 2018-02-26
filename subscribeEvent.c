@@ -112,22 +112,33 @@ void unSubscribeEvent(uint32_t evtType, uint32_t taskId)
 
 int subscribeEvent(uint32_t evtType, uint32_t taskId)
 {
-    pNode_t pNode = nodeAlloc();
+    pNode_t pNode;
     pNode_t ptr;
-    
-    if(pNode == NULL)
-        return -1;
-    
-    pNode->taskId = taskId;
+
     ptr = searchIndex(&searchMem, evtType);
     
     /*Add new search Event*/
     if(ptr == NULL)
     {
+        pNode = nodeAlloc();
+        if(pNode == NULL)
+            return -1;
+        pNode->taskId = taskId;
         searchNodeAdd(&searchMem, evtType, pNode);
     }else{
-        while(ptr->next != NULL)
-            ptr = ptr->next;
+        while(1)
+        {
+            if(ptr->taskId == taskId)
+                return -1;
+            if(ptr->next == NULL)
+                break;
+             ptr = ptr->next;
+        }
+        
+        pNode = nodeAlloc();
+        if(pNode == NULL)
+            return -1;
+        pNode->taskId = taskId;
         ptr->next = pNode;
     }
     
