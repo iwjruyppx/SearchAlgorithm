@@ -59,6 +59,18 @@ int searchNodeAdd(searchMem_t *mem, int index, void *ptr)
     return SEARCH_NON;
 }
 
+void *searchNodeModify(searchMem_t *mem, int index, void *ptr)
+{
+    psearchInfo_t p = (psearchInfo_t)mem->mem;
+    int i = findIndex(mem, index);
+
+    if( i < 0)
+        return NULL;
+
+    p[i].info = ptr;
+    return p[i].info;
+}
+
 static void nodeDel(searchMem_t *mem, int index)
 {
     psearchInfo_t p = (psearchInfo_t)mem->mem;

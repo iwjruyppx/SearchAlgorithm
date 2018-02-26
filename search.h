@@ -16,6 +16,7 @@ typedef struct
 
 void *searchIndex(searchMem_t *mem, int index);
 int searchNodeAdd(searchMem_t *mem, int index, void *ptr);
+void *searchNodeModify(searchMem_t *mem, int index, void *ptr);
 int searchNodeDel(searchMem_t *mem, int index);
 void searchInit(searchMem_t *mem);
 

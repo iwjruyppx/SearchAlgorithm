@@ -1163,6 +1163,9 @@
     <file>
       <name>$PROJ_DIR$\..\search.c</name>
     </file>
+    <file>
+      <name>$PROJ_DIR$\..\subscribeEvent.c</name>
+    </file>
   </group>
   <file>
     <name>$PROJ_DIR$\..\main.c</name>

@@ -7,7 +7,7 @@
 #include "main.h"
 #include "search.h"
 
-searchMem_t mem;
+static searchMem_t mem;
 
 #define MAX_SIZE 30
 
