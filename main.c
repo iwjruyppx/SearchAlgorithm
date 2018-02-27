@@ -41,6 +41,22 @@ void test2(int x)
 }
 
 
+void test3(int x)
+{
+    subscribeEvent(1000, 1000);
+    subscribeEvent(11, 11);
+    subscribeEvent(50, 50);
+    subscribeEvent(1200, 1200);
+    subscribeEvent(30, 30);
+    subscribeEvent(66, 66);
+    subscribeEvent(77, 77);
+    subscribeEvent(88, 88);
+    subscribeEvent(99, 99);
+    subscribeEvent(1111, 1111);
+}
+
+
+
 void testInit(void)
 {
     int i, j;
@@ -50,9 +66,6 @@ void testInit(void)
     for(i=0; i<MAX_SIZE; i++)
         for(j=0; j<MAX_SIZE; j++)
             unSubscribeEvent(i, j);
-    for(i=0; i<MAX_SIZE; i++)
-        for(j=i; j<MAX_SIZE; j++)
-            subscribeEvent(i, j);
 }
 
 void init()
@@ -67,7 +80,7 @@ void init()
     testInit();
     while(1)
     {
-        test2(30);
+        test3(30);
     }
 }
 

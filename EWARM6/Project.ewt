@@ -1161,6 +1161,12 @@
   <group>
     <name>Search</name>
     <file>
+      <name>$PROJ_DIR$\..\InsertionSort.c</name>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\..\InterpolationSearch.c</name>
+    </file>
+    <file>
       <name>$PROJ_DIR$\..\search.c</name>
     </file>
     <file>

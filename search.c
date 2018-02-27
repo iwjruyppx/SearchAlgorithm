@@ -8,6 +8,8 @@
 #include <string.h>
 
 #include "search.h"
+#include "interpolationSearch.h"
+#include "insertionSort.h"
 
 typedef struct
 {
@@ -17,14 +19,7 @@ typedef struct
 
 int findIndex(searchMem_t *mem, int index)
 {
-    psearchInfo_t p = (psearchInfo_t)mem->mem;
-    int i;
-    
-    for(i=0;i<mem->useSize;i++)
-        if(p[i].index == index)
-            return i;
-        
-    return -1;    
+    return interpolationSearch(mem->mem, mem->useSize, index);
 }
 
 void *searchIndex(searchMem_t *mem, int index)
@@ -45,6 +40,8 @@ static void nodeAdd(searchMem_t *mem, int index, void *ptr)
     p[mem->useSize].index = index;
     p[mem->useSize].info = ptr;
     mem->useSize++;
+    
+    insertionSort(mem->mem, mem->useSize);
 }
 
 int searchNodeAdd(searchMem_t *mem, int index, void *ptr)
