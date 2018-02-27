@@ -69,15 +69,18 @@ static void nodeFree(pNode_t node)
 }
 
 
-void subscribeEventCheck(uint32_t evtType, int (*callback)(uint32_t evtType, uint32_t taskId))
+int subscribeEventCheck(uint32_t evtType, void* evtData, int (*callback)(uint32_t type, uint32_t taskId, void* data))
 {
     pNode_t ptr = searchIndex(&searchMem, evtType);
+    uint32_t id;
     if(ptr == NULL)
-        return;
+        return 0;
     do{
-        callback(evtType, ptr->taskId);
+        id = ptr->taskId;
         ptr = ptr->next;
+        callback(evtType, id, evtData);
     }while(ptr != NULL);
+    return 1;
 }
 
 void unSubscribeEvent(uint32_t evtType, uint32_t taskId)

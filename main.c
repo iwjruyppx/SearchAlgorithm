@@ -9,27 +9,27 @@
 
 #define MAX_SIZE 30
 
+struct newFlashEvents{
+    uint32_t addr;
+    uint8_t length;
+    uint8_t command;
+};
 
-int callBack(uint32_t evtType, uint32_t taskId)
+
+static int callBack(uint32_t evtType, uint32_t taskId, void* evtData)
 {
-    printf("[%d]%s:[%s,%d][%s,%d]\n",__LINE__,__FUNCTION__, "evtType", evtType, "taskId", taskId);
+    struct newFlashEvents *aaa = (struct newFlashEvents *)evtData;
+    printf("[%d]%s:[%s,%d][%s,%d][%s,%d][%s,%d][%s,%d]\n",__LINE__,__FUNCTION__, "evtType", evtType, "taskId", taskId, "addr", aaa->addr, "command", aaa->command, "length", aaa->length);
     return 0;
-}
-
-void test1(int x)
-{
-    int i, j;
-    for(i = 0; i< x; i++)
-        subscribeEventCheck(i, callBack);
-    
-    for(i=0; i<MAX_SIZE; i++)
-        for(j=0; j<MAX_SIZE; j++)
-            unSubscribeEvent(i, j);
 }
 
 void test2(int x)
 {
     int i, j;
+    struct newFlashEvents aaa;
+    aaa.addr =123;
+    aaa.command = 11;
+    aaa.length = 22;
     for(i=0; i<MAX_SIZE; i++)
         for(j=0; j<MAX_SIZE; j++)
             subscribeEvent(i, j);
@@ -37,7 +37,7 @@ void test2(int x)
         for(j=0; j<MAX_SIZE; j++)
             subscribeEvent(i, j);
     for(i = 0; i< x; i++)
-        subscribeEventCheck(i, callBack);
+        subscribeEventCheck(i, &aaa, callBack);
 }
 
 
@@ -65,7 +65,6 @@ void init()
 {
     init();
     testInit();
-    test1(30);
     while(1)
     {
         test2(30);
